@@ -50,13 +50,16 @@ sudo apt-get update
 # installing CUDA-11.3
 sudo apt install cuda-11-3 
 
-CUDNN_TAR_FILE='cudnn-linux-x86_64-8.7.0.84_cuda11-archive'
-tar -xf ${CUDNN_TAR_FILE}.tar.xz
+CUDNN_TAR_FILE='cudnn-linux-x86_64-8.9.0.131_cuda11-archive'
+tar -xf Downloads/${CUDNN_TAR_FILE}.tar.xz
 
 # copy the following files into the cuda toolkit directory.
 sudo cp -P ${CUDNN_TAR_FILE}/include/cudnn.h /usr/local/cuda-11.3/include
 sudo cp -P ${CUDNN_TAR_FILE}/lib/libcudnn* /usr/local/cuda-11.3/lib64/
 sudo chmod a+r /usr/local/cuda-11.3/lib64/libcudnn*
+
+# adding NVCC to environment path
+export PATH=$PATH:/usr/local/cuda-11.7/bin
 
 # Finally, to verify the installation, reboot and check
 nvidia-smi
